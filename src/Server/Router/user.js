@@ -5,6 +5,23 @@ import { Strategy } from "passport-local";
 
 const router = express.Router();
 
+// define passport authentication
+passport.use(
+  new Strategy((username, password, callback) => {
+    try {
+      UserModel.findOne({ username: username }).then((value) => {
+        if (value.password === password) {
+          return callback(null, value);
+        } else {
+          return callback(null, false);
+        }
+      });
+    } catch (error) {
+      return callback(error, false);
+    }
+  })
+);
+
 // Retrive ALl User
 router.get("/", (req, res) => {
   UserModel.find({})
