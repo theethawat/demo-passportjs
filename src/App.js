@@ -8,6 +8,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Home from "./Containers/Home";
 import About from "./Containers/About";
+import Login from "./Containers/Login";
 
 const theme = extendTheme({
   colors: {
@@ -46,6 +47,10 @@ function App() {
                 <About />
               </Route>
               <Route path='/documents'></Route>
+              <Route path='/login'>
+                <Login />
+              </Route>
+
               <Route path='/'>
                 <Home />
               </Route>
